@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h3>Connaissance : <span id="counter">0</span></h3>
+  <div id="unlocks">Découvertes :</div>
+
+  <!-- Boutique -->
+<div id="shop">
+  <h4>🛍️ Boutique</h4>
+
+  <div class="shop-item" data-type="click" data-id="clavier">
+    <strong id="itemClavier">Clavier de codeur</strong>
+    <p>+1/clic — Coût : <span class="cost">10</span> pts</p>
+    <button class="buy-btn" id="buyStagiaire">Acheter</button>
+
+  </div>
+
+  <div class="shop-item" data-type="idle" data-id="stagiaire">
+    <strong id="itemStagiaire">Stagiaire</strong>
+    <p>+0.5/sec — Coût : <span class="cost">50</span> pts</p>
+    <button class="buy-btn" id="buyClavier">Acheter</button>
+
+  </div>
+</div>
+
+
+  <!-- Fiche interactive HTML -->
+<div id="conceptModal" style="display: none;">
+  <div id="conceptContent">
+    <h2>💡 HTML</h2>
+    <p>HTML (HyperText Markup Language) est le langage de structure des pages web. Il permet d’organiser le contenu avec des balises : &lt;p&gt;, &lt;h1&gt;, &lt;a&gt;, etc.</p>
+    
+    <p><strong>❓ Quelle balise est utilisée pour insérer un lien ?</strong></p>
+    <ul>
+      <li><button class="answer" data-correct="false">&lt;link&gt;</button></li>
+      <li><button class="answer" data-correct="true">&lt;a&gt;</button></li>
+      <li><button class="answer" data-correct="false">&lt;url&gt;</button></li>
+    </ul>
+    <button id="closeModal">Fermer</button>
+  </div>
+</div>
+
+<!-- Fiche interactive CSS -->
+<div id="cssModal" style="display: none;">
+  <div id="conceptContent">
+    <h2>🎨 CSS</h2>
+    <p>CSS (Cascading Style Sheets) est le langage qui permet de styliser les pages HTML.  
+    Il permet de modifier les couleurs, les tailles, les espacements, les polices, les animations, etc.</p>
+    
+    <p><strong>❓ À quoi sert la propriété <code>color</code> en CSS ?</strong></p>
+    <ul>
+      <li><button class="css-answer" data-correct="false">A) À changer la taille du texte</button></li>
+      <li><button class="css-answer" data-correct="true">B) À changer la couleur du texte</button></li>
+      <li><button class="css-answer" data-correct="false">C) À changer la couleur de fond</button></li>
+    </ul>
+    <button id="closeCssModal">Fermer</button>
+  </div>
+</div>
+
+<!-- Fiche interactive DOM -->
+<div id="domModal" style="display: none;">
+  <div class="conceptContent">
+    <h2>🧩 DOM</h2>
+    <p>Le DOM (Document Object Model) est une interface qui permet aux langages de script (comme JavaScript) d’accéder et de modifier dynamiquement le contenu, la structure et le style d’un document HTML.</p>
+
+    <p><strong>❓ Que fait la méthode <code>document.querySelector()</code> ?</strong></p>
+    <ul>
+      <li><button class="dom-answer" data-correct="false">A) Elle crée un nouvel élément HTML</button></li>
+      <li><button class="dom-answer" data-correct="true">B) Elle sélectionne le premier élément correspondant à un sélecteur CSS</button></li>
+      <li><button class="dom-answer" data-correct="false">C) Elle supprime un élément de la page</button></li>
+    </ul>
+    <button id="closeDomModal">Fermer</button>
+  </div>
+</div>
+
+
+  
+
+
+
+  <script src="scritp.js"></script>
+</body>
+</html>
