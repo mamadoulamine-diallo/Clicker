@@ -6,24 +6,30 @@
   <title>Clicker</title>
 
   <link rel="stylesheet" href="styles.css">
+  <script src="scritp.js" defer></script>
+
 </head>
-<body>
+<body class="html-level">
   <h3>Connaissance : <span id="counter">0</span></h3>
-  <div id="unlocks">Découvertes :</div>
+  <div id="unlocks">Découvertes :
+    <button id="resetBtn">🔄 Réinitialiser le jeu</button>
+
+  </div>
+  
 
   <!-- Boutique -->
 <div id="shop">
   <h4>🛍️ Boutique</h4>
 
   <div class="shop-item" data-type="click" data-id="clavier">
-    <strong id="itemClavier">Clavier de codeur</strong>
+    <strong id="itemStagiaire">Stagiaire</strong>
     <p>+1/clic — Coût : <span class="cost">10</span> pts</p>
     <button class="buy-btn" id="buyStagiaire">Acheter</button>
 
   </div>
 
   <div class="shop-item" data-type="idle" data-id="stagiaire">
-    <strong id="itemStagiaire">Stagiaire</strong>
+    <strong id="itemClavier">Clavier de codeur</strong>
     <p>+0.5/sec — Coût : <span class="cost">50</span> pts</p>
     <button class="buy-btn" id="buyClavier">Acheter</button>
 
@@ -80,11 +86,12 @@
   </div>
 </div>
 
+<!-- <div id="levelBanner" class="banner hidden"></div> -->
+
 
   
 
 
 
-  <script src="scritp.js"></script>
 </body>
 </html>

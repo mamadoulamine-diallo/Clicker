@@ -10,19 +10,19 @@ h3 {
   margin-top: 20px;
   color: rgba(128, 128, 128, 0.555);
 }
+
 h4 {
   font-size: 3rem;
   text-align: center;
   margin-top: 20px;
   color: rgba(128, 128, 128, 0.555);
-
 }
 
 .bubble {
   position: absolute;
   border-radius: 300px;
   background: rgba(255, 166, 0, 0.6);
-  opacity: 0.8; /* rendu visible dès le départ */
+  opacity: 0.8;
   animation: anim 8s forwards;
   filter: hue-rotate(0deg);
 }
@@ -31,12 +31,14 @@ h4 {
   to {
     top: -250px;
     left: var(--left);
-    opacity: 0; /* disparaît progressivement */
+    opacity: 0;
     filter: hue-rotate(720deg);
   }
 }
 
+/* --- SHOP : refactorisé --- */
 #shop {
+  display: none;
   position: fixed;
   top: 20px;
   right: 20px;
@@ -47,6 +49,20 @@ h4 {
   width: 250px;
   font-size: 1rem;
   z-index: 1000;
+}
+
+/* Spécificité DOM */
+.dom-level #shop {
+  top: 60px;
+  width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Apparition JS */
+#shop.js-visible {
+  display: block;
+  animation: appear 0.6s ease-out;
 }
 
 #shop h3 {
@@ -84,8 +100,7 @@ h4 {
   background-color: #3e8e41;
 }
 
-
-/* 🧠 Nouvelle boîte pour les découvertes */
+/* --- UNLOCKS --- */
 #unlocks {
   position: fixed;
   bottom: 20px;
@@ -99,105 +114,18 @@ h4 {
   color: #333;
 }
 
-#conceptModal {
+/* --- MODALS --- */
+#conceptModal, #cssModal, #domModal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
 
-#conceptContent {
-  background: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 500px;
-  font-size: 1rem;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-
-#conceptContent ul {
-  list-style: none;
-  padding: 0;
-}
-
-#conceptContent button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* Style général des modales */
-#conceptModal,
-#cssModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* fond assombri */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-/* Contenu de la modale */
-#conceptContent {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-#conceptContent h2 {
-  margin-bottom: 1rem;
-}
-
-#conceptContent ul {
-  list-style: none;
-  padding: 0;
-}
-
-#conceptContent li {
-  margin: 0.5rem 0;
-}
-
-#conceptContent button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  border: none;
-  background-color: orange;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#conceptContent button:hover {
-  background-color: darkorange;
-}
-
-/* Modale DOM - même style que HTML et CSS */
-#domModal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* fond assombri */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-/* Contenu spécifique DOM - même base que conceptContent */
+#conceptContent,
 #domModal .conceptContent {
   background: #fff;
   padding: 2rem;
@@ -208,19 +136,23 @@ h4 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
+#conceptContent h2,
 #domModal .conceptContent h2 {
   margin-bottom: 1rem;
 }
 
+#conceptContent ul,
 #domModal .conceptContent ul {
   list-style: none;
   padding: 0;
 }
 
+#conceptContent li,
 #domModal .conceptContent li {
   margin: 0.5rem 0;
 }
 
+#conceptContent button,
 #domModal .conceptContent button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
@@ -233,10 +165,12 @@ h4 {
   transition: background 0.3s;
 }
 
+#conceptContent button:hover,
 #domModal .conceptContent button:hover {
   background-color: darkorange;
 }
 
+/* --- FEEDBACK --- */
 .feedback {
   position: absolute;
   color: #2ecc71;
@@ -257,4 +191,72 @@ h4 {
   }
 }
 
+/* --- LEVEL STYLES --- */
+.html-level {
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: sans-serif;
+}
+
+.css-level {
+  background: linear-gradient(to right, #e0f7fa, #80deea);
+  color: #1a237e;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.6s ease-in-out;
+}
+
+.css-level h3,
+.css-level #unlocks {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dom-level {
+  background: radial-gradient(circle at center, #fff8e1, #ffe082);
+  color: #4e342e;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.5s ease-in-out;
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* === Bandeau niveau === */
+.banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffeb3b;
+  color: #000;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease, top 0.5s ease;
+}
+
+.banner.show {
+  top: 60px;
+  opacity: 1;
+}
+
+.banner.hidden {
+  display: none;
+}
 
